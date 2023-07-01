@@ -155,9 +155,7 @@ public class EmployeeController {
 		MasterEmployeeDetails emp = this.masterEmployeeDetailsRepository
 				.findByLancesoft(empReq.getMasterEmployeeDetails().getLancesoft());
 		if (emp != null) {
-			return new ResponseEntity<>(
-					new DuplicateEntryException("Employee with this employee Id alreday exist in database"),
-					HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>( new DuplicateEntryException("Employee with this employee Id already exists in the database"), HttpStatus.BAD_REQUEST); 
 		}
 		MasterEmployeeDetails employee = this.masterEmployeeDetailsRepository.save(empReq.getMasterEmployeeDetails());
 
